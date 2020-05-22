@@ -1,0 +1,11 @@
+<div fxLayout="row wrap">
+    <div class="matCard" *ngFor="let item of childMessage" fxLayoutGap="30px">
+        <mat-card [ngStyle]="{'background-color': item.hexcode}">
+            <div>{{item.title}}</div>
+            <div>{{item.discription}}</div>
+            <div>
+                <app-icons [noteInfo]='item' (color)="changeColour($event)"></app-icons>
+            </div>
+        </mat-card>
+    </div>
+</div>
