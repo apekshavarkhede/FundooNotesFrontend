@@ -1,23 +1,65 @@
-<mat-toolbar class="toolbar">
-  <button type="button" mat-button (click)="drawer.toggle()">
+<mat-toolbar class="toolbar" color="white">
+  <button mat-mini-fab color="white" (click)="drawer.toggle()">
     <mat-icon> menu </mat-icon>
   </button>
-  <p>{{title}}</p>
+  <div fxLayout.xs="column">
+    <img class="image" src="../../../assets/keep.jpg" />
+  </div>
+  <span class="fundooTitle" fxFlex.xs="100">{{title}}</span>
+  <div fxFlex="60">
+    <mat-card class="titleMatCard" fxFlex="89">
+      <div>
+        <!-- <mat-icon class="searchIcon">search
+        </mat-icon> -->
+        <input matInput class="inputBox" placeholder="Search" fxFlex="100" />
+        <!-- <mat-icon class="searchIcon">clear
+        </mat-icon> -->
+      </div>
+    </mat-card>
+  </div>
+  <div fxLayout="row" fxLayoutGap="5pc">
+    <div class="refresh">
+      <button mat-icon-button>
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>view_agenda</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+    </div>
+    <div>
+      <button mat-icon-button>
+        <mat-icon>apps</mat-icon>
+      </button>
+      <button mat-icon-button (click)="signOut()" matTooltip="signOut">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+  </div>
+
 </mat-toolbar>
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <div class="title" routerLink="/dashboard/notes" routerLinkActive="notes">notes</div>
-    <mat-divider></mat-divider>
-    <div class="remainder" routerLink="/dashboard/remainders" routerLinkActive="notes">remainders</div>
-    <mat-divider></mat-divider>
-    <div class="remainder">edit labels</div>
-    <mat-divider></mat-divider>
-    <div class="remainder" routerLink="/dashboard/archive" routerLinkActive="notes">archive</div>
-    <mat-divider></mat-divider>
+    <div fxLayout="row" class="listItem" routerLink="/dashboard/notes" routerLinkActive="notes" (mouseover)="{'background-color': red}">
+      <mat-icon class="listIcons">lightbulb_outline</mat-icon>
+      <div class="title" >notes</div>
+    </div>
+    <div fxLayout="row" class="listItem" routerLink="/dashboard/remainders" routerLinkActive="notes">
+      <mat-icon class="listIcons">notifications_none</mat-icon>
+      <div class="title" >remainders</div>
+    </div>
+    <div fxLayout="row" class="listItem">
+      <mat-icon class="listIcons">label_outline</mat-icon>
+      <div class="title">edit labels</div>
+    </div>
+    <div fxLayout="row" class="listItem">
+      <mat-icon class="listIcons">archive</mat-icon>
+      <div class="title" routerLink="/dashboard/archive" routerLinkActive="notes">archive</div>
+    </div>
   </mat-drawer>
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>
-
-
 </mat-drawer-container>

@@ -1,6 +1,5 @@
 .toolbar {
   border: 1px;
-  background-color: gold;
 }
 
 .example-container {
@@ -25,19 +24,158 @@
 }
 
 .title{
-  font-size: 20px;
-  margin-left: 40px;
+  font-size: 18px;
+  margin-top: 2px;
+  margin-left: 19px;
+  // margin-bottom: 15px;;
   cursor: pointer;
 }
 
 .remainder{
-  font-size: 20px;
-  margin-left: 30px;
-  margin-top: 15px;
+  height: 25px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
 .titleInToolBar{
   margin-left: 10px;
   margin-top: 10px;
+}
+
+.titleMatCard{
+  height: 35px;
+  margin-left: 3pc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.inputBox{
+  margin-left: 5px;
+  height: 25px;
+  border: none;
+  margin-top: -10px;
+}
+
+
+.searchIcon{
+  margin-bottom: 25px;
+}
+
+.refresh{
+  margin-left: 5pc;
+}
+
+.setting{
+  margin-left: 2pc;
+}
+
+.image{
+   width:40px;
+  height:50px;
+  margin-left: 10px;
+  margin-top: 9px;
+}
+
+.fundooTitle{
+  margin-top: -5px;
+  margin-left: 3px;
+}
+
+.listIcons{
+  margin-top: 2px;
+}
+
+.listItem{
+  height: 32px;
+}
+/********************1*******/ 
+// .title{
+//   display: inline-block;
+//   color: #f5862b;
+//   opacity: 1;
+//   font-family: 'Product Sans',Arial,sans-serif;
+//   font-size: 22px;
+//   line-height: 24px;
+//   padding-left: 4px;
+//   position: relative;
+//   top: -13.5px;
+//   vertical-align: middle;
+//   text-rendering: optimizeLegibility;
+//   -webkit-font-smoothing: antialiased;
+// }
+
+.other-main{
+  width:150px;
+  margin-left: 25px;
+}
+
+.other-title{
+  display: inline-block;
+  color: #f5862b;
+  opacity: 1;
+  font-family: 'Product Sans',Arial,sans-serif;
+  font-size: 22px;
+}
+
+.menu{
+  cursor: pointer;
+}
+
+.image{
+  width:40px;
+  height:40px;
+}
+
+.main{
+  width:150px;
+  margin-left: 25px;
+  margin-top: 5px;
+}
+
+.icon{
+  margin-top: 20px;
+}
+
+.ui-inputgroup{
+  margin-left: 90px;
+}
+
+.ui-inputtext:not(:first-child) {
+  width: 550px;
+}
+
+.icons{
+  margin-left: 150px;
+  margin-top: 33px;
+}
+
+.settings,.view{
+  margin-left: 40px;
+}
+
+.refresh,.settings,.view,.profile{
+  cursor: pointer;
+}
+
+.profile{
+  margin-left: 90px;
+  border-radius: 90%;
+}
+
+@media screen and (max-width:450px){
+  .image{
+      display: none;
+  }
+  .title{
+      width:120px;
+      top:-2.5px;
+      font-size: 20px;
+  }
+  .main,.other-main{
+      margin-left: 10px;
+  }
+  .other-title{
+      width:120px;
+      font-size: 20px;
+  }
 }
