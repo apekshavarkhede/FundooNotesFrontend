@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../Services/data.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { NoteService } from '../../Services/note.service';
 import { Input } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CollabratorComponent } from '../collabrator/collabrator.component';
 
 @Component({
   selector: 'app-display-notes',
@@ -11,34 +13,116 @@ import { Input } from '@angular/core';
 })
 
 export class DisplayNotesComponent implements OnInit {
+  @Input() note: any;
   @Input() childMessage: string;
-  // @Input() noteInfo: string;
+  @Output() getNotes: EventEmitter<any> = new EventEmitter();
 
+  removable: boolean = true;
+  open: boolean = false;
 
   constructor(private dataService: DataService, private noteService: NoteService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  changeColour(colour) {
+  setColor(colour) {
+    let noteData = {
+      '_id': this.note['_id'],
+      'color': colour
+    }
+    this.noteService.changeColor(noteData).subscribe(
+      response => {
+        this.getNotes.emit(colour)
+      },
+      error => {
+        console.log("errr", error);
+      }
+    )
+  }
 
-    // let note = {
-    //   '_id': this.noteInfo['_id'],
-    //   'color': colour
-    // }
-    // console.log("noteInfoooo==", note);
+  addRemainder(remainder) {
+    let noteData = {
+      '_id': this.note['_id'],
+      'remainder': remainder
+    }
+    this.noteService.addRemainder(noteData).subscribe(
+      response => {
+        this.getNotes.emit(remainder)
+      },
+      error => {
+        console.log("error", error);
+      }
+    )
+  }
 
-    // this.noteService.changeColor(note).subscribe(
-    //   response => {
-    //     // this.color.emit(colour)
+  removeRemainder() {
+    let remainderData = {
+      '_id': this.note['_id'],
+      remainder: null
+    }
+    this.noteService.removeRemainder(remainderData).subscribe(
+      response => {
+        this.getNotes.emit()
+      },
+      err => {
+        console.log("error", err);
+      }
+    )
+  }
 
-    //     console.log("res-==", response);
-    //   },
-    //   error => {
-    //     console.log("errr", error);
-    //   }
-    // )
+  deleteNote() {
+    console.log("this.note", this.note);
+
+    let noteData = {
+      '_id': this.note['_id']
+    }
+    this.noteService.deleteNote(noteData).subscribe(
+      response => {
+        console.log(noteData._id, "788888", this.note);
+
+        console.log("response", response);
+        this.getNotes.emit()
+      }, error => {
+        console.log("error", error);
+
+      }
+    )
+  }
+
+  setArchive() {
+    let request = {
+      '_id': this.note['_id'],
+      isArchive: true
+    }
+    this.noteService.archiveNote(request).subscribe(response => {
+      console.log("response", response);
+      this.getNotes.emit()
+    }, (error) => {
+      console.log("err", error);
+
+    })
+  }
+
+  unArchive() {
+    let request = {
+      '_id': this.note['_id'],
+      isArchive: false
+    }
+    this.noteService.unArchieveNote(request).subscribe(response => {
+      console.log("res inn unarchieve");
+      this.getNotes.emit()
+    })
+  }
+
+  openDialougeBox(): void {
+    const dialogRef = this.dialog.open(CollabratorComponent, {
+      data: { note: this.note }
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
+

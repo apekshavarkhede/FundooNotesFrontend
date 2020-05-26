@@ -1,0 +1,23 @@
+<mat-toolbar class="toolbar">
+  <button type="button" mat-button (click)="drawer.toggle()">
+    <mat-icon> menu </mat-icon>
+  </button>
+  <p>{{title}}</p>
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="title" routerLink="/dashboard/notes" routerLinkActive="notes">notes</div>
+    <mat-divider></mat-divider>
+    <div class="remainder" routerLink="/dashboard/remainders" routerLinkActive="notes">remainders</div>
+    <mat-divider></mat-divider>
+    <div class="remainder">edit labels</div>
+    <mat-divider></mat-divider>
+    <div class="remainder" routerLink="/dashboard/archive" routerLinkActive="notes">archive</div>
+    <mat-divider></mat-divider>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+
+</mat-drawer-container>

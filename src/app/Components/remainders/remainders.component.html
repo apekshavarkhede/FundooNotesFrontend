@@ -1,0 +1,5 @@
+<app-take-note (getNotes)="getNotes()">
+</app-take-note>
+<div fxLayout="row wrap">
+    <app-display-notes (getNotes)="getNotes()" *ngFor="let item of totalNotes" [note]="item"></app-display-notes>
+</div>

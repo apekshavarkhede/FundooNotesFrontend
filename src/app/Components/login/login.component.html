@@ -1,0 +1,67 @@
+<!-- <div class="formSize"  [formGroup]="formData" class="formSize" fxLayoutAlign="center center">
+  <mat-card class="matCard" fxLayoutAlign="center center">
+    <p class="login" fxLayoutAlign="center center">Login</p>
+    <div>
+      <mat-form-field class="formField" appearance="outline" fxFlex="100">
+        <mat-label>Enter Email</mat-label>
+        <input matInput placeholder="Enter Email" formControlName="userEmail" />
+        <mat-error *ngIf="formData.controls['userEmail'].invalid">
+            {{ getErrorMessage("userEmail", "userEmail") }}
+        </mat-error>
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-hint>Enter Email</mat-hint>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="formField" appearance="outline" fxFlex="100">
+        <mat-label>Enter Password</mat-label>
+        <input matInput placeholder="Enter Email" formControlName="password" />
+        <mat-error *ngIf="formData.controls['password'].invalid">
+            {{ getErrorMessage("password", "password") }}
+        </mat-error>
+        <mat-icon matSuffix>visibility_off</mat-icon>
+        <mat-hint>Enter Password</mat-hint>
+      </mat-form-field>
+    </div>
+    <div fxLayoutGap="10px">
+      <button class="forgetPassword" mat-button color="primary" (click)="forgetPassword()">Forget Password</button>
+      <button class="next" mat-raised-button color="primary" (click) ="next()">Next</button>
+    </div>
+  </mat-card>
+</div> -->
+
+<div class="formSize" [formGroup]="formData"  fxLayoutAlign="space-around center">
+  <mat-card class="matCard">
+    <div>
+      <p fxLayoutAlign="center center">Login</p>
+    </div>
+    <div fxLayout="column">
+      <div  fxFlex="100">
+        <mat-form-field class="formField" appearance="outline" fxFlex="100">
+          <mat-label>Enter Email</mat-label>
+          <input matInput placeholder="Enter Email" formControlName="userEmail" />
+          <mat-error *ngIf="formData.controls['userEmail'].invalid">
+            {{ getErrorMessage("userEmail", "userEmail") }}
+          </mat-error>
+          <!-- <mat-icon matSuffix>email</mat-icon> -->
+          <mat-hint>Enter Email</mat-hint>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100">
+        <mat-form-field class="formField" appearance="outline" fxFlex="100">
+          <mat-label>Enter Password</mat-label>
+          <input matInput placeholder="Enter Email" formControlName="password" />
+          <mat-error *ngIf="formData.controls['password'].invalid">
+            {{ getErrorMessage("password", "password") }}
+          </mat-error>
+          <!-- <mat-icon matSuffix>visibility_off</mat-icon> -->
+          <mat-hint>Enter Password</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="forgetPassword" fxLayoutGap="20pc" fxLayout="row">
+        <button mat-button color="primary" (click)="forgetPassword()">Forget Password</button>
+        <button mat-raised-button color="primary" (click)="next()">Next</button>
+      </div>
+    </div>
+  </mat-card>
+</div>

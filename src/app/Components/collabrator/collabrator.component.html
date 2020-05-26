@@ -1,0 +1,39 @@
+<mat-card class="collaborator-card">
+    <div class="collaborator-title">Collabrators</div>
+    <div class="collaborator-align collaborator-name">
+        <div class="collaborator-owner">
+            <mat-icon class="imageDiv">person_add</mat-icon>
+            <span>
+                {{firstName}}
+                {{lastName}}
+            </span>
+            <span>(Owner)</span>
+            <div class="userEmail">{{userEmail}}</div>
+        </div>
+    </div>
+
+    <div *ngFor="let item of note.collabrator">
+        <div class="collaborator-owner" *ngIf="item.userEmail!==userEmail">
+            <mat-icon class="imageDiv">person_add</mat-icon>
+            <div class="collaborator-align collaborator-name collaborator-width">
+                <div class="collaborator-owner">
+                    <span>{{item.userEmail}}</span>
+                </div>
+            </div>
+            <mat-icon (click)="deleteCollabrator(item)" matTooltip="Delete">clear</mat-icon>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px">
+        <div>
+            <mat-icon class="collabrator">person_add</mat-icon>
+        </div>
+        <input class="input collaborator-width collaborator-align" (input)="inputChange($event)" />
+        <mat-icon (click)="addCollaborator()" matTooltip="Add collaborator">done
+        </mat-icon>
+    </div>
+    <div class="collaborator-owner toolBox " fxLayoutGap="10px">
+        <button class="button button-margin" (click)="close()">Cancel</button>
+        <button class="button" (click)="saveCollabrator()">Save</button>
+    </div>
+
+</mat-card>

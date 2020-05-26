@@ -20,6 +20,12 @@ export class TakeNoteComponent implements OnInit {
   isPopUp = false;
   @Output() getNotes: EventEmitter<any> = new EventEmitter();
 
+  noteArchive = {
+    title: null,
+    label: [],
+    isArchived: false,
+    isTrash: false
+  }
 
   constructor(private formBuilder: FormBuilder, private router: ActivatedRoute, private noteService: NoteService,
     private dataService: DataService, private snackBar: MatSnackBar) { }
@@ -43,8 +49,6 @@ export class TakeNoteComponent implements OnInit {
       }
       this.noteService.createNote(noteData).subscribe(
         (response: any) => {
-          console.log("respinse in creste noe", response);
-          this.snackBar.open(response.message, "end now")
           this.getNotes.emit()
         },
         err => {

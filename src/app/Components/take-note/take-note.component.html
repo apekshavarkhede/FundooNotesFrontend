@@ -1,11 +1,11 @@
 <div [formGroup]="formData" fxLayoutAlign="center center">
-    <mat-card class="matCard" *ngIf="!isPopUp" (click)="openMatCard()" fxFlex.gt-md="50" fxFlex.gt-sm="45"
+    <mat-card class="matCard" *ngIf="!isPopUp" (click)="openMatCard()" fxFlex.gt-md="43" fxFlex.gt-sm="35"
         fxFlex.gt-xs="30">
         <div>
             <input class="title" placeholder="Take a note.." fxFlex="100" />
         </div>
     </mat-card>
-    <mat-card class="matCard" *ngIf="isPopUp" fxFlex.gt-md="50" fxFlex.gt-sm="45" fxFlex.gt-xs="30">
+    <mat-card class="matCard" *ngIf="isPopUp" fxFlex.gt-md="43" fxFlex.gt-sm="35" fxFlex.gt-xs="30">
         <div fxLayout="column" fxLayoutGap="1pc">
             <div>
                 <input class="title" matInput placeholder="Title" formControlName="title" fxFlex="100" />
@@ -16,15 +16,9 @@
                 </div>
             </div>
             <div fxLayout="row" fxLayoutGap.gt.md="3pc">
-                <app-icons (color)="changeColour($event)"></app-icons>
-                <button matPreffix mat-icon-button>
-                    <mat-icon>undo</mat-icon>
-                </button>
+                <app-icons [archivedNote]="noteArchive"></app-icons>
                 <div>
-                    <div fxLayoutGap.gt-md="12pc" fxLayoutGap.gt-sm="3pc" fxLayoutGap.gt.lg="13pc" fxLayoutGap="19pc">
-                        <button matPreffix mat-icon-button>
-                            <mat-icon>redo</mat-icon>
-                        </button>
+                    <div class="close">
                         <button mat-raised-button (click)="openMatCard() ; createNote() ">Close</button>
                     </div>
                 </div>

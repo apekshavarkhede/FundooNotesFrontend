@@ -1,11 +1,41 @@
-<div fxLayout="row wrap">
+<!-- <div fxLayout="row wrap">
     <div class="matCard" *ngFor="let item of childMessage" fxLayoutGap="30px">
-        <mat-card [ngStyle]="{'background-color': item.hexcode}">
+        <mat-card [ngStyle]="{'background-color': item.color}">
             <div>{{item.title}}</div>
             <div>{{item.discription}}</div>
+            <mat-chip-list>
+                <mat-chip *ngIf="item.remainder!==null">
+                    {{item.remainder}}
+                    <mat-icon matChipRemove *ngIf="removable" (click)="removeRemainder()">cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
             <div>
-                <app-icons [noteInfo]='item' (color)="changeColour($event)"></app-icons>
+                <app-icons [noteInfo]='item' (colorEvent)="setColor($event)" (remainderEvent)="removeRemainder($event)">
+                </app-icons>
             </div>
         </mat-card>
     </div>
+</div> -->
+
+<div class="matCard" fxLayout="row wrap" fxLayoutGap="3pc">
+    <mat-card [ngStyle]="{'background-color': note.color}">
+        <div>{{note.title}}</div>
+        <div>{{note.discription}}</div>
+        <mat-chip-list>
+            <mat-chip *ngIf="note.remainder!==null">
+                {{note.remainder}}
+                <mat-icon matChipRemove *ngIf="removable" (click)="removeRemainder()">cancel</mat-icon>
+            </mat-chip>
+            <mat-chip *ngFor="let item of note.collabrator">
+                <mat-icon matTooltip="{{item.userEmail}}" (click)="openDialougeBox()">person_add</mat-icon>
+            </mat-chip>
+
+        </mat-chip-list>
+        <div *ngFor="let item of collabrator">
+            <button (click)="openDialougeBox()">person_add</button>
+        </div>
+        <app-icons [archivedNote]="note" (colorEvent)="setColor($event)" (remainderEvent)="addRemainder($event)"
+            (collabrator)="openDialougeBox()" (delete)="deleteNote()" (archive)="setArchive()"
+            (unArchive)="unArchive()"></app-icons>
+    </mat-card>
 </div>

@@ -1,0 +1,77 @@
+<div>
+  <div fxLayoutGap.gt-md="10px" fxLayoutGap.gt-sm="5px" fxLayoutGap.gt-xs="1px">
+    <button class="button" mat-icon-button [matMenuTriggerFor]="add_alert" matTooltip="Remind Me">
+      <mat-icon class="icons">
+        add_alert
+      </mat-icon>
+      <mat-menu #add_alert="matMenu" yPosition="above">
+        <div>
+          <!-- <button style="font-size: 10px; margin-left: -15px;" mat-menu-item> </button> -->
+          <div>
+            <mat-icon style="font-size: 20px;">alarm
+            </mat-icon>
+            <input placeholder="select date" [(ngModel)]="date" [owlDateTimeTrigger]="dt3" [value]='calendar'
+              [owlDateTime]="dt3">
+            <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+          </div>
+        </div>
+        <div fxLayoutAlign="end end">
+          <button mat-button (click)="addRemainder(date)">Save</button>
+          <mat-chip-list>
+            <!-- <mat-chip *ngIf="item.remainder!==null"> -->
+            <!-- {{item.remainder}} -->
+            <!-- <mat-icon matChipRemove *ngIf="removable" (click)="removeRemainder()">cancel</mat-icon> -->
+            <!-- </mat-chip> -->
+          </mat-chip-list>
+        </div>
+      </mat-menu>
+    </button>
+
+    <button class="button" mat-icon-button matTooltip="collabrator" (click)="openCollabrator()">
+      <mat-icon class="icons">
+        person_add
+      </mat-icon>
+    </button>
+
+    <button class="button" mat-icon-button [matMenuTriggerFor]="palette" matTooltip="change colour">
+      <mat-icon class="icons">
+        palette
+      </mat-icon>
+      <mat-menu #palette="matMenu" yPosition="above">
+        <div *ngFor="let item of colorCode" fxLayout="row" fxLayoutAlign="row-wrap">
+          <div *ngFor="let name1 of item">
+            <button mat-button [ngStyle]="{'background-color': name1.hexcode}" mat-mini-fab matTooltip={{name1.name}}
+              (click)=setColor(name1.hexcode)></button>
+          </div>
+        </div>
+      </mat-menu>
+    </button>
+
+    <button class="button" mat-icon-button matTooltip="Add image">
+      <mat-icon class="icons">
+        insert_photo
+      </mat-icon>
+    </button>
+
+    <button class="button" *ngIf="!archivedNote.isArchive" mat-icon-button matTooltip="Archive">
+      <mat-icon class="icons" (click)="archiveNote()">
+        archive
+      </mat-icon>
+    </button>
+
+    <button class="button" *ngIf="archivedNote.isArchive===true" mat-icon-button matTooltip="unArchive">
+      <mat-icon class="icons" (click)="unArchiveNote()">
+        file_upload
+      </mat-icon>
+    </button>
+
+    <button class="button" mat-icon-button [matMenuTriggerFor]="more_vert" matTooltip="More">
+      <mat-icon class="icons">
+        more_vert
+      </mat-icon>
+      <mat-menu #more_vert="matMenu" yPosition="below">
+        <div class="deleteNote" (click)="deleteNote()">Delete Note</div>
+      </mat-menu>
+    </button>
+  </div>
+</div>

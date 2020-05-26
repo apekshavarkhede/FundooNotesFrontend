@@ -1,0 +1,148 @@
+<!-- <div [formGroup]="formData" class="formSize" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card  fxFlex="50" fxLayoutAlign="center center">
+        <div >
+            <p>
+                <span class="f" style="font-size: 30px;">F</span>
+                <span class="u" style="font-size: 30px;">u</span>
+                <span class="n" style="font-size: 30px;">n</span>
+                <span class="d" style="font-size: 30px;">d</span>
+                <span class="o" style="font-size: 30px;">o</span>
+                <span class="g" style="font-size: 30px;">o</span>
+            </p>
+        </div>
+        <p class="CreateAccount">Create Your Fundoo Account</p>
+        <div fxLayout="row">
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+                <div>
+                    <mat-form-field class="formField" appearance="outline" fxFlex="50">
+                        <mat-label>Enter firstName</mat-label>
+                        <input matInput placeholder="Placeholder" formControlName="firstName" />
+                        <mat-error *ngIf="formData.controls['firstName'].invalid">
+                            {{ getErrorMessage("firstName", "firstName") }}
+                        </mat-error>
+                        <mat-hint>FirstName</mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="formField" appearance="outline">
+                        <mat-label>Enter lastName</mat-label>
+                        <input matInput placeholder="Placeholder" formControlName="lastName" />
+                        <mat-error *ngIf="formData.controls['firstName'].invalid">
+                            {{ getErrorMessage("lastName", "lastName") }}
+                        </mat-error>
+                        <mat-hint>LastName</mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <mat-form-field class="formField" appearance="outline" fxFlex="100">
+                    <mat-label>Enter Email</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="userEmail" />
+                    <mat-error *ngIf="formData.controls['firstName'].invalid">
+                        {{ getErrorMessage("userEmail", "userEmail") }}
+                    </mat-error>
+                    <mat-hint>Email</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="formField" appearance="outline">
+                    <mat-label>Enter Password</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="password" />
+                    <mat-error *ngIf="formData.controls['firstName'].invalid">
+                        {{ getErrorMessage("password", "password") }}
+                    </mat-error>
+                    <mat-hint>Email</mat-hint>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="formField" appearance="outline">
+                    <mat-label>Enter Password</mat-label>
+                    <input matInput placeholder="Placeholder" />
+                    <mat-hint>Email</mat-hint>
+                </mat-form-field>
+            </div>
+            <div fxLayoutGap="10px">
+                <button mat-button color="primary" (click)="singIn()">
+                    sign in instead
+                </button>
+                <button mat-raised-button color="primary" (click)="next()">Next</button>
+            </div>
+        </div>
+    </mat-card>
+</div> -->
+
+<div [formGroup]="formData" fxLayoutAlign="space-around center" class="formSize">
+    <mat-card fxFlex.gt-md="50">
+        <span class="f" style="font-size: 30px;">F</span>
+        <span class="u" style="font-size: 30px;">u</span>
+        <span class="n" style="font-size: 30px;">n</span>
+        <span class="d" style="font-size: 30px;">d</span>
+        <span class="o" style="font-size: 30px;">o</span>
+        <span class="g" style="font-size: 30px;">o</span>
+        <p class="CreateAccount">Create Your Fundoo Account</p>
+
+        <div fxLayout="row">
+            <div>
+                <mat-form-field class="formField" appearance="outline" fxFlex=100>
+                    <mat-label>Enter firstName</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="firstName" />
+                    <mat-error *ngIf="formData.controls['firstName'].invalid">
+                        {{ getErrorMessage("firstName", "firstName") }}
+                    </mat-error>
+                    <mat-hint>FirstName</mat-hint>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="formField" appearance="outline" fxFlex=100>
+                    <mat-label>Enter lastName</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="lastName" />
+                    <mat-error *ngIf="formData.controls['firstName'].invalid">
+                        {{ getErrorMessage("lastName", "lastName") }}
+                    </mat-error>
+                    <mat-hint>LastName</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <mat-form-field class="formField" appearance="outline" fxFlex="70">
+                <mat-label>Enter Email</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="userEmail" />
+                <mat-error *ngIf="formData.controls['firstName'].invalid">
+                    {{ getErrorMessage("userEmail", "userEmail") }}
+                </mat-error>
+                <mat-hint>Email</mat-hint>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row">
+            <div>
+                <mat-form-field class="formField" appearance="outline">
+                    <mat-label>Enter Password</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="password" />
+                    <mat-error *ngIf="formData.controls['firstName'].invalid">
+                        {{ getErrorMessage("password", "password") }}
+                    </mat-error>
+                    <mat-hint>Password</mat-hint>
+                </mat-form-field>
+            </div>
+            <!-- <div>
+                <mat-form-field class="formField" appearance="outline">
+                    <mat-label>Enter Password</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="password" />
+                    <mat-error *ngIf="formData.controls['firstName'].invalid">
+                        {{ getErrorMessage("password", "password") }}
+                    </mat-error>
+                    <mat-hint>Password</mat-hint>
+                </mat-form-field>
+            </div> -->
+        </div>
+        <div fxLayoutGap="20pc">
+            <button mat-button color="primary" (click)="singIn()">
+                sign in instead
+            </button>
+            <button mat-raised-button color="primary" (click)="next()">Next</button>
+        </div>
+
+    </mat-card>
+</div>

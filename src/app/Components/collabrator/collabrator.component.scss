@@ -1,0 +1,57 @@
+.collaborator-card{
+    width: 500px;
+    min-height: 150px;
+}
+
+.collaborator-title{
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    font-size: 18px;
+    font-weight: 500;
+    height: 25px;
+    padding: 0 0 10px 0;
+}
+
+.imageDiv{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.collaborator-align{
+    margin: 13px 13px 0px 13px;
+}
+
+.collaborator-name{
+    font-size: 13px;
+}
+.collaborator-owner{
+    display: flex;
+}
+
+.userEmail{
+    display: block;
+    margin-top: 15px;
+    margin-left: -10pc;
+}
+
+.toolBox{
+    margin-top: 30px;
+    margin-left: 25pc;
+    height: 30px;
+}
+
+.collabrator{
+    margin-left: 13px;
+}
+.formField{
+    width: 100%;
+}
+.collaborator-align{
+    margin: 0px 13px 0px 13px;
+}
+.collaborator-width{
+    width:400px;
+}
+

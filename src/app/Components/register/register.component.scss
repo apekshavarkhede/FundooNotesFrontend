@@ -1,0 +1,131 @@
+.formSize {
+  height: -webkit-fill-available;
+}
+// .mainMatCard {
+//   margin-top: 20px;
+  
+// }
+
+@media screen and (max-width: 640px) {
+  .mainMatCard {
+    margin-top: 3pc;
+    width: 55vw;
+    margin-left: 60px;
+  }
+}
+
+
+
+.CreateAccount {
+  font-size: 25px;
+  margin-top: 5px;
+  // margin-left: 1px;
+}
+
+@media screen and (max-width: 360px) {
+  .CreateAccount {
+    font-size: 15px;
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+}
+
+.formField{
+  margin-left: 21px;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 360px){
+  .formField{
+    margin-left: 1px;
+  }
+}
+
+.p {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 360px) {
+  .p {
+    font-size: 15px;
+  }
+}
+
+.loginFormFiled {
+  width: 415px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.f {
+  color: blue;
+  font-size: 30px;
+}
+@media screen and (max-width: 360px) {
+  .f {
+    font-size: 22px;
+  }
+}
+
+.u {
+  color: burlywood;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 360px) {
+  .u {
+    font-size: 22px;
+  }
+}
+
+.n {
+  color: red;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 360px) {
+  .n {
+    font-size: 22px;
+  }
+}
+
+.d {
+  color: cornflowerblue;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 360px) {
+  .d {
+    font-size: 22px;
+  }
+}
+
+.o {
+  color: darkgreen;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 360px) {
+  .o {
+    font-size: 22px;
+  }
+}
+
+.g {
+  color: darkkhaki;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 360px) {
+  .g {
+    font-size: 22px;
+  }
+}
