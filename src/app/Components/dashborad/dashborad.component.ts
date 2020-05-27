@@ -12,11 +12,17 @@ export class DashboradComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) { }
   open: boolean
   title = "fundooNotes";
-  grid:boolean=false;
+  grid: boolean = false;
+  inputValue: string;
+  searchNote: any;
+
 
 
   ngOnInit() {
-    this.dataService.open.subscribe(value => this.open = value)
+    // this.dataService.searchNote.subscribe(response => this.searchNote = response) 
+    this.dataService.title.subscribe(resonse => this.title = resonse)
+    // this.searchKey()
+    // this.dataService.open.subscribe(value => this.open = value)
   }
 
   signOut() {
@@ -24,6 +30,10 @@ export class DashboradComponent implements OnInit {
     this.router.navigate(["/login"]);
   }
 
+  searchKey() {
+    this.dataService.searchInput(this.inputValue)
 
+    // this.dataService.searchNote.subscribe(input => this.inputValue = this.inputValue)
+  }
 
 }

@@ -11,7 +11,9 @@
       <div>
         <!-- <mat-icon class="searchIcon">search
         </mat-icon> -->
-        <input matInput class="inputBox" placeholder="Search" fxFlex="100" />
+        <input type="text" [(ngModel)]="inputValue" (keyup)="searchKey()" matInput class="inputBox" placeholder="Search"
+          fxFlex="80" />
+        <!-- <div *ngIf="input.length>0">clear</div> -->
         <!-- <mat-icon class="searchIcon">clear
         </mat-icon> -->
       </div>
@@ -38,17 +40,17 @@
       </button>
     </div>
   </div>
-
 </mat-toolbar>
+
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <div fxLayout="row" class="listItem" routerLink="/dashboard/notes" routerLinkActive="notes" (mouseover)="{'background-color': red}">
+    <div fxLayout="row" class="listItem" routerLink="/dashboard/notes" routerLinkActive="notes">
       <mat-icon class="listIcons">lightbulb_outline</mat-icon>
-      <div class="title" >notes</div>
+      <div class="title">notes</div>
     </div>
     <div fxLayout="row" class="listItem" routerLink="/dashboard/remainders" routerLinkActive="notes">
       <mat-icon class="listIcons">notifications_none</mat-icon>
-      <div class="title" >remainders</div>
+      <div class="title">remainders</div>
     </div>
     <div fxLayout="row" class="listItem">
       <mat-icon class="listIcons">label_outline</mat-icon>

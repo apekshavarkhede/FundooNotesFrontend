@@ -15,19 +15,34 @@ export class NotesComponent implements OnInit {
 
   // parentmsg = [];
   totalNotes = [];
+  searchNote: string
+  x = ''
 
-  constructor(private userService: UserService, private snackBar: MatSnackBar
+  constructor(private userService: UserService, private snackBar: MatSnackBar, private dataService: DataService
     , private noteService: NoteService) { }
 
-  getallNotes() {
+  getallNotes(value) {
+
     this.noteService.getAlNotes().subscribe(
       (response: any) => {
         this.totalNotes = response.data
         this.totalNotes.reverse()
-        let notes = this.totalNotes.filter((element) => {
-          return element.isArchive !== true
-        })
-        this.totalNotes = notes;
+        // console.log("value===", value);
+        // let matchedNotes = []
+        if (value) {
+          let note = this.totalNotes.filter((element) => {
+            return element.title === value
+          })
+          this.totalNotes = note;
+        }
+        else {
+          let notes = this.totalNotes.filter((element) => {
+            console.log("element.isArchive !== true", element, element.isArchive !== true);
+            return element.isArchive === false
+          })
+          console.log("notes", notes);
+          this.totalNotes = notes;
+        }
       },
       err => {
         this.snackBar.open("err", "end now")
@@ -36,7 +51,16 @@ export class NotesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getallNotes()
+    this.dataService.searchNote.subscribe(response => {
+      this.x = response;
+      console.log("response in ngOnit", this.x);
+
+      this.getallNotes(this.x)
+    })
+    // let xx = this.dataService.searchNote.subscribe(
+    //   m => this.x = m
+    // )
+    console.log("xxx===", this.x);
   }
 
 
