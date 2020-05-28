@@ -1,0 +1,27 @@
+<div (click)="$event.stopPropagation()">
+    <p class="label-title">Label Note</p>
+    <div class="search">
+        <input matInput class="input" [(ngModel)]="lableInput" (input)="searchLable($event)"
+            placeholder="Enter label name" />
+        <mat-icon matIcon class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" width="18px" viewBox="0 0 48 48">
+                <path
+                    d="m31 28h-1.59l-0.55-0.55c1.96-2.27 3.14-5.22 3.14-8.45 0-7.18-5.82-13-13-13s-13 5.82-13 13 5.82 13 13 13c3.23 0 6.18-1.18 8.45-3.13l0.55 0.55v1.58l10 9.98 2.98-2.98-9.98-10zm-12 0c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z" />
+                <path d="m0 0h48v48h-48z" fill="none" />
+            </svg>
+        </mat-icon>
+    </div>
+    <mat-divider></mat-divider>
+    <hr *ngIf="lableInput.length!==0">
+    <div fxLayout="row" (click)="createLable()">
+        <mat-icon class="createIcon">
+            <svg xmlns=" http://www.w3.org/2000/svg" height="18px" width="18px" viewBox="0 0 48 48" fill="#000000">
+                <path d="m38 26h-12v12h-4v-12h-12v-4h12v-12h4v12h12v4z" />
+                <path d="m0 0h48v48h-48z" fill="none" />
+            </svg>
+        </mat-icon>
+        <p class="createP">create    <b>"{{lableInput}}"</b></p>
+    </div>
+    <!-- <mat-checkbox class="checkbox" (click)="$event.stopPropagation()" [checked]="createLable()"> -->
+    <!-- </mat-checkbox> -->
+</div>

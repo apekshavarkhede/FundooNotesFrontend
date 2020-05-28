@@ -1,0 +1,57 @@
+.label-title{
+    cursor: default;
+    font-size: 14px;
+    padding: 0 12px;
+}
+
+.search{
+    display: flex;
+    flex-direction: row;
+    padding: 8px 12px;
+    position: relative;
+    transition: box-shadow .218s;
+    border: none;
+}
+
+.input{
+    box-sizing: border-box;
+    height: auto;
+    padding: 2px 22px 2px 2px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+    color: #3c4043;
+    font-size: 13px;
+    font-family: 'Roboto',arial,sans-serif;
+    outline: none;
+}
+
+.createBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.createBox:hover{
+    background-color: rgba(95,99,104,0.039);
+}
+
+.createIcon{
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.checkbox{
+    margin-left: 12pc;
+}
+
+.createP{
+    margin-left: 10px;
+    cursor: pointer;
+
+}
+
+.createDiv{
+    margin-top: -10px;
+}

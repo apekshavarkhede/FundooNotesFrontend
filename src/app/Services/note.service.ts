@@ -53,4 +53,16 @@ export class NoteService {
     return this.http.postForNote('/unArchieveNote', note)
   }
 
+  createLabel(label) {
+    return this.http.postForNote('/createLabel', label)
+  }
+
+  addLableToNote(req) {
+    return this.http.postForNote('addLableToNote', req)
+  }
+
+  // addLableToNote(note) {
+  //   return this.http.postForLabel('/notes/{noteId}/addLabelToNotes/{lableId}/add', note)
+  // }
+
 }
