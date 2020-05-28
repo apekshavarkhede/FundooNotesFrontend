@@ -18,7 +18,8 @@ export class IconsComponent implements OnInit {
   @Output() collabrator: EventEmitter<any> = new EventEmitter<any>()
   @Output() delete: EventEmitter<any> = new EventEmitter<any>()
   @Output() archive: EventEmitter<any> = new EventEmitter<any>()
-  @Output() unArchive: EventEmitter<any> = new EventEmitter<any>()
+  @Output() unArchive: EventEmitter<any> = new EventEmitter<any>();
+  @Output() labels: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private snackBar: MatSnackBar, private noteService: NoteService) { }
   public colorCode: any = [
@@ -64,6 +65,14 @@ export class IconsComponent implements OnInit {
 
   unArchiveNote() {
     this.unArchive.emit()
+  }
+
+  // addLabels() {
+  //   this.labels.emit()
+  // }
+
+  openLabel(input: any) {
+    this.labels.emit(input)
   }
 
   ngOnInit() {

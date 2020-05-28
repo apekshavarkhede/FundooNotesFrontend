@@ -37,8 +37,8 @@ export class LabelsMenuComponent implements OnInit {
     }
 
     this.noteService.createLabel(request).subscribe(response => {
-      console.log(" response inlabel", response.data.label);
-      this.changeLabels.emit({ value: true, label: response.data.label })
+      console.log(" response inlabel", response);
+      this.changeLabels.emit({ value: true, label: response.data._id })
       this.lableInput = '';
     },
       (error => {

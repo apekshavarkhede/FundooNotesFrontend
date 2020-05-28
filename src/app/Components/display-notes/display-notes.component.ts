@@ -17,6 +17,7 @@ export class DisplayNotesComponent implements OnInit {
   @Input() childMessage: string;
   @Output() getNotes: EventEmitter<any> = new EventEmitter();
 
+  x: any
   removable: boolean = true;
   open: boolean = false;
 
@@ -24,6 +25,9 @@ export class DisplayNotesComponent implements OnInit {
     private snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit() {
+    let xx = this.dataService.searchNote.subscribe(
+      m => this.x = m
+    )
   }
 
   setColor(colour) {
@@ -41,14 +45,19 @@ export class DisplayNotesComponent implements OnInit {
     )
   }
 
-  addRemainder(remainder) {
+  addRemainder(remainderValue) {
+    let newDate = remainderValue.toString();
+    let reminder = newDate.slice(4, 10) + ',' + newDate.slice(11, 15) + ' ' + newDate.slice(16, 25);
+
     let noteData = {
       '_id': this.note['_id'],
-      'remainder': remainder
+      'remainder': reminder
     }
+    console.log("remainder", noteData.remainder);
+
     this.noteService.addRemainder(noteData).subscribe(
       response => {
-        this.getNotes.emit(remainder)
+        this.getNotes.emit(reminder)
       },
       error => {
         console.log("error", error);
@@ -122,6 +131,23 @@ export class DisplayNotesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  addLableToNote(lable: any) {
+    console.log("able.label", lable.label);
+
+    if (lable.value === true) {
+      let data = {
+        '_id': this.note['_id'],
+        label: lable.label
+      }
+      this.noteService.addLableToNote(data).subscribe(response => {
+        console.log("response in addLableToNote ", response);
+        this.getNotes.emit(lable.label)
+      })
+
+    }
+    // this.noteService.addLableToNote()
   }
 
 }

@@ -1,27 +1,8 @@
-<!-- <div fxLayout="row wrap">
-    <div class="matCard" *ngFor="let item of childMessage" fxLayoutGap="30px">
-        <mat-card [ngStyle]="{'background-color': item.color}">
-            <div>{{item.title}}</div>
-            <div>{{item.discription}}</div>
-            <mat-chip-list>
-                <mat-chip *ngIf="item.remainder!==null">
-                    {{item.remainder}}
-                    <mat-icon matChipRemove *ngIf="removable" (click)="removeRemainder()">cancel</mat-icon>
-                </mat-chip>
-            </mat-chip-list>
-            <div>
-                <app-icons [noteInfo]='item' (colorEvent)="setColor($event)" (remainderEvent)="removeRemainder($event)">
-                </app-icons>
-            </div>
-        </mat-card>
-    </div>
-</div> -->
-
-<div class="matCard" fxLayout="row wrap" fxLayoutGap="3pc">
+<div class="matCard" fxLayout="row wrap" fxLayoutGap="5px">
     <mat-card [ngStyle]="{'background-color': note.color}">
         <div>{{note.title}}</div>
         <div>{{note.discription}}</div>
-        <mat-chip-list>
+        <mat-chip-list class="matChip">
             <mat-chip *ngIf="note.remainder!==null">
                 {{note.remainder}}
                 <mat-icon matChipRemove *ngIf="removable" (click)="removeRemainder()">cancel</mat-icon>
@@ -29,13 +10,15 @@
             <mat-chip *ngFor="let item of note.collabrator">
                 <mat-icon matTooltip="{{item.userEmail}}" (click)="openDialougeBox()">person_add</mat-icon>
             </mat-chip>
-
+            <mat-chip *ngFor="let item of note.label"> {{item.label}}
+            </mat-chip>
         </mat-chip-list>
-        <div *ngFor="let item of collabrator">
+        <div *ngFor="let item of collabrator" fxLayout="row">
             <button (click)="openDialougeBox()">person_add</button>
         </div>
-        <app-icons [archivedNote]="note" (colorEvent)="setColor($event)" (remainderEvent)="addRemainder($event)"
-            (collabrator)="openDialougeBox()" (delete)="deleteNote()" (archive)="setArchive()"
-            (unArchive)="unArchive()"></app-icons>
+
+        <app-icons class="icon" [archivedNote]="note" (colorEvent)="setColor($event)"
+            (remainderEvent)="addRemainder($event)" (collabrator)="openDialougeBox()" (delete)="deleteNote()"
+            (archive)="setArchive()" (unArchive)="unArchive()" (labels)="addLableToNote($event)"></app-icons>
     </mat-card>
 </div>

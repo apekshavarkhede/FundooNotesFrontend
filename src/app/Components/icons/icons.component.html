@@ -71,7 +71,13 @@
       </mat-icon>
       <mat-menu #more_vert="matMenu" yPosition="below">
         <div class="deleteNote" (click)="deleteNote()">Delete Note</div>
+        <button mat-menu-item [matMenuTriggerFor]="labelMenu" (click)="addLabels()">Add Label</button>
       </mat-menu>
+      <mat-menu #labelMenu="matMenu" yPosition="below">
+        <app-labels-menu (changeLabels)="openLabel($event)"></app-labels-menu>
+      </mat-menu>
+      <div>
+      </div>
     </button>
   </div>
 </div>
