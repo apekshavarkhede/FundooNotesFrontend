@@ -3,7 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { MatSnackBar } from '@angular/material';
+
 import { log } from 'util';
+
 
 
 @Component({
@@ -56,10 +58,10 @@ export class RegisterComponent implements OnInit {
       }
       this.userservice.register(userData).subscribe(
         (response: any) => {
-          console.log("response",response);
-          
           this.showSucessMessage = true;
+          this.route.navigate(["/login"]);
           this.matSnackBar.open("registration sucessful", "end now")
+          return true
         },
         err => {
           this.showSucessMessage = false;
@@ -73,10 +75,9 @@ export class RegisterComponent implements OnInit {
 
   }
 
-    singIn(){
-      this.route.navigate(['login'])
-
-    }
+  singIn() {
+    this.route.navigate(['login'])
+  }
 
   ngOnInit() {
     this.formControlValidation()
