@@ -88,5 +88,13 @@ fdescribe('RegisterComponent', () => {
     expect(component.formData.valid).toBeFalsy()
   })
 
+  fit('given proper userData when check for valida should return true',()=>{
+   component.formData.controls['firstName'].setValue('abc');
+    component.formData.controls['lastName'].setValue('xyz');
+    component.formData.controls['userEmail'].setValue('ape@gmail.com');
+    component.formData.controls['password'].setValue('Apeksha123')
+    expect(component.formData.valid).toBeTruthy()
+  })
+
 });
 
