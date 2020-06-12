@@ -54,4 +54,10 @@ fdescribe('LoginComponent', () => {
     expect(component.formData.valid).toBeTruthy()
   })
 
+  it('given improper login credentials when check for validation should throw error', () => {
+    component.formData.controls['userEmail'].setValue('apekshavarkhede1508');
+    component.formData.controls['password'].setValue('Apeksha123');
+    expect(component.formData.valid).toBeFalsy()
+  })
+
 });
