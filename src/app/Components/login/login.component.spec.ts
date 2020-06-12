@@ -11,13 +11,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { DebugElement } from '@angular/core';
+import { UserService } from 'src/app/Services/user.service';
+import { of } from 'rxjs';
+import * as data from '../../../../src/app/data.json';
+
 
 
 fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let de: DebugElement;
-
+  let userService: UserService
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -32,7 +36,10 @@ fdescribe('LoginComponent', () => {
         RouterTestingModule,
         HttpClientModule
       ],
-      declarations: [LoginComponent]
+      declarations: [LoginComponent],
+      providers: [
+        UserService
+      ]
     })
       .compileComponents();
   }));
@@ -40,6 +47,7 @@ fdescribe('LoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    userService = TestBed.get(UserService)
     de = fixture.debugElement.query(By.css('div'));
     fixture.detectChanges();
   });
@@ -48,16 +56,23 @@ fdescribe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('given correct login credentials when check for validation should return true', () => {
-    component.formData.controls['userEmail'].setValue('apekshavarkhede1508@gmail.com');
-    component.formData.controls['password'].setValue('Apeksha123');
+  fit('given correct login credentials when check for validation should return true', () => {
+    component.formData.setValue(data[3].loginCredentials)
     expect(component.formData.valid).toBeTruthy()
   })
 
-  it('given improper login credentials when check for validation should throw error', () => {
-    component.formData.controls['userEmail'].setValue('apekshavarkhede1508');
-    component.formData.controls['password'].setValue('Apeksha123');
+  fit('given improper login credentials when check for validation should throw error', () => {
+    component.formData.setValue(data[2].improperLoginCredentials)
     expect(component.formData.valid).toBeFalsy()
+  })
+
+  fit('given proper credentials when try to login should be able to login', () => {
+    component.formData.setValue(data[3].loginCredentials)
+    let response = { success: true, message: "login sucess" }
+    let login = component.next()
+    spyOn(userService, 'login').and.returnValue(of(response))
+    expect(component.formData.valid).toBeTruthy()
+    expect(response.success).toBe(true)
   })
 
 });

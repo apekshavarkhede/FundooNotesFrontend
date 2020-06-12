@@ -43,15 +43,18 @@ export class LoginComponent implements OnInit {
         userEmail: this.formData.value.userEmail,
         password: this.formData.value.password
       }
+
       this.userService.login(userInformation).subscribe(
         (response: any) => {
           this.sucessMessage = true;
           sessionStorage.setItem("token", response.data.token);
           sessionStorage.setItem("firstName", response.data.firstName)
           sessionStorage.setItem("lastName", response.data.lastName)
-          sessionStorage.setItem("userEmail",response.data.userEmail)
+          sessionStorage.setItem("userEmail", response.data.userEmail)
           this.matSnackbar.open("Login sucessful", "end now");
           this.route.navigate(['dashboard'])
+          // console.log("heyyy", response);
+
         },
         err => {
           this.sucessMessage = false;
