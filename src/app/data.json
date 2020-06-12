@@ -1,0 +1,18 @@
+[
+  {
+    "registerData": {
+      "firstName": "xyz",
+      "lastName": "abc",
+      "userEmail": "abc@gmail.com",
+      "password": "Apeksha1234"
+    }
+  },
+  {
+    "improperRegisterCredentials":{
+      "firstName": "xyz",
+      "lastName": "abc",
+      "userEmail": "xyzgmail.com",
+      "password": "Apeksha1234"
+    }
+  }
+]
