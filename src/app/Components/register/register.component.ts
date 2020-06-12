@@ -3,10 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { MatSnackBar } from '@angular/material';
-
 import { log } from 'util';
-
-
+import * as data from '../../../../src/app/data.json';
 
 @Component({
   selector: 'app-register',
