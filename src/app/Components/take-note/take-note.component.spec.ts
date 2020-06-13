@@ -19,15 +19,12 @@ import { LabelsMenuComponent } from '../labels-menu/labels-menu.component'
 import { MatDividerModule } from '@angular/material/divider';
 import * as data from '../../../app/data.json';
 import { HttpTestingController } from '@angular/common/http/testing';
-
 import { from, of } from 'rxjs';
-
 
 fdescribe('TakeNoteComponent', () => {
   let component: TakeNoteComponent;
   let fixture: ComponentFixture<TakeNoteComponent>;
   let noteService: NoteService
-  // let httpMock: HttpTestingController;
 
   beforeAll(() => {
     sessionStorage.setItem('token', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZDY0MWIwM2JmMDZjM2YyNDI0NmM1YSIsImlhdCI6MTU5MjAyOTAzMH0.Ntm4zlauXXehhWzwKlUhmrXPx8JqbmYbkWUi5KGF7Sc")
@@ -52,7 +49,6 @@ fdescribe('TakeNoteComponent', () => {
         MatChipsModule,
         MatTooltipModule,
         MatDividerModule,
-        // HttpTestingController
       ],
       declarations: [TakeNoteComponent, IconsComponent, LabelsMenuComponent],
 
@@ -67,7 +63,6 @@ fdescribe('TakeNoteComponent', () => {
     fixture = TestBed.createComponent(TakeNoteComponent);
     component = fixture.componentInstance;
     noteService = TestBed.get(NoteService);
-    // httpMock = TestBed.get(HttpTestingController);
     fixture.detectChanges();
   });
 
@@ -85,7 +80,7 @@ fdescribe('TakeNoteComponent', () => {
     expect(component.formData.valid).toBeFalsy()
   })
 
-  fit(`given proper data when create notes should create note`, () => {
+  it(`given proper data when create notes should create note`, () => {
     component.formData.setValue(data[4].noteData)
     let response = { success: true, message: "note created" }
     spyOn(noteService, 'createNote').and.returnValue(of(response))
@@ -94,4 +89,12 @@ fdescribe('TakeNoteComponent', () => {
     expect(response.success).toBe(true)
   })
 
+  fit('given noteData  when create note but note is alreday present should not create note', () => {
+    component.formData.setValue(data[4].noteData)
+    let response = { success: false, message: 'note is already present' }
+    spyOn(noteService, 'createNote').and.returnValue(of(response))
+    component.createNote()
+    expect(noteService.createNote).toHaveBeenCalled()
+    expect(response.success).toBe(false)
+  })
 });

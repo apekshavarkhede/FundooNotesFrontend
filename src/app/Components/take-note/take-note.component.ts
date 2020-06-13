@@ -48,8 +48,6 @@ export class TakeNoteComponent implements OnInit {
         title: this.formData.value.title,
         discription: this.formData.value.discription
       }
-      console.log("moteData====", noteData);
-
       this.noteService.createNote(noteData).subscribe(
         (response: any) => {
 
