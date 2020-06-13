@@ -8,7 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../Services/data.service'
 import { log } from 'util';
-import {IconsComponent} from '../icons/icons.component'
+import { IconsComponent } from '../icons/icons.component'
 
 
 @Component({
@@ -20,8 +20,6 @@ export class TakeNoteComponent implements OnInit {
   formData: FormGroup
   isPopUp = false;
   @Output() getNotes: EventEmitter<any> = new EventEmitter();
-  // @Input() archivedNote: string;
-
 
   noteArchive = {
     title: null,
@@ -50,8 +48,11 @@ export class TakeNoteComponent implements OnInit {
         title: this.formData.value.title,
         discription: this.formData.value.discription
       }
+      console.log("moteData====", noteData);
+
       this.noteService.createNote(noteData).subscribe(
         (response: any) => {
+
           this.getNotes.emit()
         },
         err => {
