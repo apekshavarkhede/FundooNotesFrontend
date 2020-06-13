@@ -74,4 +74,8 @@ fdescribe('TakeNoteComponent', () => {
     expect(component.formData.valid).toBeTruthy()
   })
 
+  it('given improper noteData when check for validation should return false',()=>{
+    component.formData.setValue(data[5].imProperNoteData)
+    expect(component.formData.valid).toBeFalsy()
+  })
 });
