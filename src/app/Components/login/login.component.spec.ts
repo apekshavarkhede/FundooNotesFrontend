@@ -48,7 +48,7 @@ fdescribe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     userService = TestBed.get(UserService)
-    de = fixture.debugElement.query(By.css('div'));
+    // de = fixture.debugElement.query(By.css('div'));
     fixture.detectChanges();
   });
 

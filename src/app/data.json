@@ -8,11 +8,36 @@
     }
   },
   {
-    "improperRegisterCredentials":{
+    "improperRegisterCredentials": {
       "firstName": "xyz",
       "lastName": "abc",
       "userEmail": "xyzgmail.com",
       "password": "Apeksha1234"
+    }
+  },
+  {
+    "improperLoginCredentials": {
+      "userEmail": "xyz",
+      "password": "Apeksha1234"
+    }
+  },
+  {
+    "loginCredentials": {
+      "userEmail": "apekshavarkhede1508@gmail.com",
+      "password": "Apeksha123"
+    }
+  },
+  {
+    "noteData": {
+      "title": "hiii",
+      "discription":"heyy"
+    }
+  },
+  {
+    "imProperNoteData":{
+      "title": "",
+      "discription":""
+
     }
   }
 ]

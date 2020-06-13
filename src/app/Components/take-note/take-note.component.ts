@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../Services/user.service';
@@ -8,6 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../Services/data.service'
 import { log } from 'util';
+import {IconsComponent} from '../icons/icons.component'
 
 
 @Component({
@@ -19,6 +20,8 @@ export class TakeNoteComponent implements OnInit {
   formData: FormGroup
   isPopUp = false;
   @Output() getNotes: EventEmitter<any> = new EventEmitter();
+  // @Input() archivedNote: string;
+
 
   noteArchive = {
     title: null,

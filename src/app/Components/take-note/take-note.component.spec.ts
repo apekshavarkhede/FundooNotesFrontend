@@ -1,16 +1,62 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TakeNoteComponent } from './take-note.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserModule } from '@angular/platform-browser';
+import { NoteService } from '../../Services/note.service';
+import { IconsComponent } from '../icons/icons.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { LabelsMenuComponent } from '../labels-menu/labels-menu.component'
+import { MatDividerModule } from '@angular/material/divider';
+import * as data from '../../../app/data.json'
+import { from } from 'rxjs';
 
-describe('TakeNoteComponent', () => {
+fdescribe('TakeNoteComponent', () => {
   let component: TakeNoteComponent;
   let fixture: ComponentFixture<TakeNoteComponent>;
+  let noteService: NoteService
+
+  beforeAll(() => {
+    sessionStorage.setItem('token', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZDY0MWIwM2JmMDZjM2YyNDI0NmM1YSIsImlhdCI6MTU5MjAyOTAzMH0.Ntm4zlauXXehhWzwKlUhmrXPx8JqbmYbkWUi5KGF7Sc")
+  })
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TakeNoteComponent ]
+      imports: [
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        FlexLayoutModule,
+        BrowserModule,
+        MatCardModule,
+        RouterTestingModule,
+        MatSnackBarModule,
+        MatMenuModule,
+        MatIconModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule,
+        MatChipsModule,
+        MatTooltipModule,
+        MatDividerModule
+      ],
+      declarations: [TakeNoteComponent, IconsComponent, LabelsMenuComponent],
+
+      providers: [
+        NoteService,
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,4 +68,10 @@ describe('TakeNoteComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('given noteData when check for validation should return true', () => {
+    component.formData.setValue(data[4].noteData)
+    expect(component.formData.valid).toBeTruthy()
+  })
+
 });
