@@ -4,8 +4,6 @@ import { UserService } from '../../Services/user.service';
 import { MatSnackBar } from '@angular/material';
 import { NoteService } from '../../Services/note.service'
 
-
-
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -21,7 +19,8 @@ export class NotesComponent implements OnInit {
   constructor(private userService: UserService, private snackBar: MatSnackBar, private dataService: DataService
     , private noteService: NoteService) { }
 
-  getallNotes(value) {
+  getallNotes() {
+
     this.noteService.getAlNotes().subscribe(
       (response: any) => {
         this.totalNotes = response.data
@@ -43,7 +42,7 @@ export class NotesComponent implements OnInit {
       search: data
     }
     this.noteService.searchNote(noteData).subscribe(response => {
-      this.totalNotes = response.data
+      // this.totalNotes = response.data
       let notes = this.totalNotes.filter((element) => {
         return element.isArchive === false
       })
@@ -53,13 +52,14 @@ export class NotesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.changeInTitle("FundooNotes")
     this.dataService.searchNote.subscribe(response => {
       this.x = response;
       if (response.length > 0) {
         this.searchNoteByTitle(response)
       }
       if (response.length === 0) {
-        this.getallNotes(this.x)
+        this.getallNotes()
       }
     })
   }
