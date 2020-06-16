@@ -10,7 +10,7 @@
             <mat-chip *ngFor="let item of note.collabrator">
                 <mat-icon matTooltip="{{item.userEmail}}" (click)="openDialougeBox()">person_add</mat-icon>
             </mat-chip>
-            <mat-chip *ngFor="let item of note.label"> {{item.label}}
+            <mat-chip *ngFor="let item of note.label"> {{item}}
             </mat-chip>
         </mat-chip-list>
         <div *ngFor="let item of collabrator" fxLayout="row">

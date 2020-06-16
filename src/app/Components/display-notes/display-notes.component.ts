@@ -37,6 +37,8 @@ export class DisplayNotesComponent implements OnInit {
     }
     this.noteService.changeColor(noteData).subscribe(
       response => {
+        console.log("response in set color", response);
+
         this.getNotes.emit(colour)
       },
       error => {
@@ -89,12 +91,11 @@ export class DisplayNotesComponent implements OnInit {
     this.noteService.deleteNote(noteData).subscribe(
       response => {
         console.log(noteData._id, "788888", this.note);
-
         console.log("response", response);
         this.getNotes.emit()
       }, error => {
-        console.log("error", error);
 
+        console.log("error", error);
       }
     )
   }
@@ -134,20 +135,17 @@ export class DisplayNotesComponent implements OnInit {
   }
 
   addLableToNote(lable: any) {
-    console.log("able.label", lable.label);
-
+    console.log("able.label", lable);
     if (lable.value === true) {
       let data = {
         '_id': this.note['_id'],
         label: lable.label
       }
       this.noteService.addLableToNote(data).subscribe(response => {
-        console.log("response in addLableToNote ", response);
-        this.getNotes.emit(lable.label)
+        console.log("response in addLableToNote ", lable)
+        this.getNotes.emit(lable.labelName)
       })
-
     }
-    // this.noteService.addLableToNote()
   }
 
 }
